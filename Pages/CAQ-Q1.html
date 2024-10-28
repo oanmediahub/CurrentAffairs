@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 1</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="page.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css">
+</head>
+<body onload="startTimer()"> <!-- Timer starts as soon as the page loads -->
+    <section class="header">
+        <div class="text">
+            <h1>QUESTION 1</h1>
+        </div>
+        <div class="question">
+            <h2>What is the capital of France?</h2> <!-- Question here -->
+            <ul class="options">
+                <li>A. Berlin</li>
+                <li>B. Madrid</li>
+                <li>C. Paris</li>
+                <li>D. Rome</li>
+            </ul>
+        </div>
+        <div class="back">
+            <a href="../CurrentAffairs.html" class="back-btn">Back</a>
+        </div>
+        <div class="answer_btn">
+            <li><a>ANSWER</a></li>
+            <br>
+            <li><a>C. Paris</a></li> <!-- Answer option -->
+        </div>
+        <div class="pop_btn">
+            <i style="font-variant: small-caps;" class="fa-solid fa-lightbulb"> Ans</i>
+        </div>
+        <div class="bottom-right-container">
+            <div id="timer1">30</div> <!-- Display time here -->
+        </div>
+        
+        <audio id="ding" src="count/ding.mp3"></audio>
+
+        <script>
+            let timerInterval;
+            let timeLeft = 30; // change time here
+
+            function startTimer() {
+                updateTimer(); 
+                timerInterval = setInterval(updateTimer, 1000);
+            }
+
+            function updateTimer() {
+                const timerElement = document.getElementById("timer1");
+                timerElement.textContent = timeLeft;
+
+                if (timeLeft === 0) {
+                    clearInterval(timerInterval);
+                    playDingSound();
+                } else {
+                    timeLeft--;
+                }
+            }
+
+            function playDingSound() {
+                const dingSound = document.getElementById("ding");
+                dingSound.play();
+            }
+        </script>
+    </section>
+
+    <script>
+        const toggleBtn = document.querySelector(".pop_btn");
+        const AnswerBtn = document.querySelector(".answer_btn");
+
+        toggleBtn.onclick = function () {
+            AnswerBtn.classList.toggle("open");
+        };
+    </script>
+</body>
+</html>
