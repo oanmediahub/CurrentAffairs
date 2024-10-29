@@ -114,14 +114,15 @@
             font-size: 2.1em;
             font-weight: bold;
             font-family: "Caveat", cursive;
-            margin-bottom: -100px;  /* Reduced space */
-            margin-top: -100px;  /* Reduced space */
+            margin-bottom: 20px;  /* Reduced space */
+            margin-top: 50px;  /* Reduced space */
         }
         .question-options {
             list-style-type: none;
             padding: 0;
             font-family: "Caveat", cursive;
-            margin-bottom: 120px;  /* Reduced space */
+            margin-bottom: 100px;  /* Reduced space */
+            margin-top: 20px;
         }
         .question-options li {
             margin: 10px 0;
@@ -369,16 +370,19 @@
             const timerDisplay = document.getElementById("timer-count");
             timerDisplay.textContent = timeLeft;
             const audio = document.getElementById("ding");
-            
+
             timerInterval = setInterval(() => {
                 timeLeft--;
-                timerDisplay.textContent = timeLeft;
-                if (timeLeft <= 0) {
+                if (timeLeft > 0) {
+                    timerDisplay.textContent = timeLeft;
+                } else {
                     clearInterval(timerInterval);
+                    timerDisplay.textContent = "Time's up!";
                     audio.play();
                 }
             }, 1000);
         }
+
 
         function stopTimer() {
             clearInterval(timerInterval);
