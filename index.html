@@ -8,7 +8,7 @@
     <title>Current Affairs</title>
     <style>
         body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-family: "Caveat", cursive;
             background-color: #e9ecef;
             color: #333;
             margin: 0;
@@ -137,6 +137,7 @@
             color: #fff;
             font-weight: bold;
             font-family: "Caveat", cursive;
+            width: 50%;
         }
         .navigation {
             display: flex;
@@ -210,6 +211,21 @@
         .arrow-button:hover {
             background-color: #495057;
         }
+        
+        .credits{
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            /* Optional: add additional styling */
+            font-size: 1.2em;
+            padding: 0 10px
+
+        }
+        .credits a{
+            text-decoration: none;
+            color: orangered;
+        }
     </style>
     
 </head>
@@ -229,9 +245,10 @@
         <!-- Last 28 buttons dynamically generated -->
     </div>
     <button class="arrow-button" id="prev-page" onclick="changePage(-1)" style="left: 20px;">&#8592;</button>
+    <!--<legend class="credits">Created By: <a href="https://oanmediahub.github.io/">MediaHub</a></legend>-->
     <button class="arrow-button" id="next-page" onclick="changePage(1)" style="right: 20px;">&#8594;</button>
     <button class="reset-btn" onclick="resetButtons()">Reset</button>
-    <audio id="ding" src="ding.mp3"></audio>
+    <audio id="ding" src="timer.mp3"></audio>
     <div id="questionModal" class="modal">
         <div class="modal-content">
 
