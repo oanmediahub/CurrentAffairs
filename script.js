@@ -3,25 +3,45 @@ let currentPage = 1;
 // QUESTIONS START
 const questions = [
     // 1. Question
-    { text: "Which country recently hosted the 2023 G20 Summit?", options: ["A. United States", "B. India", "C. France", "D. Japan"], answer: "B. India" },
+    { text: "Which country recently hosted the 2023 G20 Summit?", 
+        options: ["A. United States", "B. India", "C. France", "D. Japan"], 
+        answer: "B. India" },
     // 2. Question
-    { text: "What is the capital of Ukraine?", options: ["A. Kyiv", "B. Moscow", "C. Warsaw", "D. Minsk"], answer: "A. Kyiv" },
+    { text: "What is the capital of Ukraine?", 
+        options: ["A. Kyiv", "B. Moscow", "C. Warsaw", "D. Minsk"], 
+        answer: "A. Kyiv" },
     // 3. Question
-    { text: "Which country won the FIFA Women’s World Cup 2023?", options: ["A. England", "B. Germany", "C. United States", "D. Spain"], answer: "D. Spain" },
+    { text: "Which country won the FIFA Women’s World Cup 2023?", 
+        options: ["A. England", "B. Germany", "C. United States", "D. Spain"], 
+        answer: "D. Spain" },
     // 4. Question
-    { text: "Who is the current Secretary-General of the United Nations?", options: ["A. António Guterres", "B. Ban Ki-moon", "C. Kofi Annan", "D. Boutros Boutros-Ghali"], answer: "A. António Guterres" },
+    { text: "Who is the current Secretary-General of the United Nations?", 
+        options: ["A. António Guterres", "B. Ban Ki-moon", "C. Kofi Annan", "D. Boutros Boutros-Ghali"], 
+        answer: "A. António Guterres" },
     // 5. Question
-    { text: "Which city hosted the 2024 Olympics?", options: ["A. Los Angeles", "B. Paris", "C. Tokyo", "D. Beijing"], answer: "B. Paris" },
+    { text: "Which city hosted the 2024 Olympics?", 
+        options: ["A. Los Angeles", "B. Paris", "C. Tokyo", "D. Beijing"], 
+        answer: "B. Paris" },
     // 6. Question
-    { text: "Which country recently left the European Union?", options: ["A. Italy", "B. France", "C. United Kingdom", "D. Germany"], answer: "C. United Kingdom" },
+    { text: "Which country recently left the European Union?", 
+        options: ["A. Italy", "B. France", "C. United Kingdom", "D. Germany"], 
+        answer: "C. United Kingdom" },
     // 7. Question
-    { text: "Who won the 2022 Nobel Peace Prize?", options: ["A. Maria Ressa", "B. Malala Yousafzai", "C. Denis Mukwege", "D. Ales Bialiatski"], answer: "D. Ales Bialiatski" },
+    { text: "Who won the 2022 Nobel Peace Prize?", 
+        options: ["A. Maria Ressa", "B. Malala Yousafzai", "C. Denis Mukwege", "D. Ales Bialiatski"], 
+        answer: "D. Ales Bialiatski" },
     // 8. Question
-    { text: "Which country hosted COP27 in 2022?", options: ["A. Egypt", "B. France", "C. Brazil", "D. South Africa"], answer: "A. Egypt" },
+    { text: "Which country hosted COP27 in 2022?", 
+        options: ["A. Egypt", "B. France", "C. Brazil", "D. South Africa"], 
+        answer: "A. Egypt" },
     // 9. Question
-    { text: "Which country is the largest producer of crude oil?", options: ["A. Saudi Arabia", "B. United States", "C. Russia", "D. Iran"], answer: "B. United States" },
+    { text: "Which country is the largest producer of crude oil?", 
+        options: ["A. Saudi Arabia", "B. United States", "C. Russia", "D. Iran"], 
+        answer: "B. United States" },
     // 10. Question
-    { text: "Who is the current chairperson of the African Union?", options: ["A. Macky Sall", "B. Cyril Ramaphosa", "C. Nana Akufo-Addo", "D. Muhammadu Buhari"], answer: "A. Macky Sall" }
+    { text: "Who is the current chairperson of the African Union?", 
+        options: ["A. Macky Sall", "B. Cyril Ramaphosa", "C. Nana Akufo-Addo", "D. Muhammadu Buhari"], 
+        answer: "A. Macky Sall" }
     // Just copy paste the question 74 more times and it will automatically be assigned to the button, change the questions,
     // the options, and the answer. (The answer in the "answer" should be identical in the "options")
 ];
@@ -145,6 +165,18 @@ function resetButtons() {
         alert("Incorrect password. Reset cancelled.");
     }
 }
+
+// Listen for keydown event to trigger reset function with "r" key
+document.addEventListener('keydown', (event) => {
+    const key = event.key.toLowerCase(); // Ensures it works regardless of case
+    if (key === 'r') {
+        resetButtons();
+    } else if (key === 'arrowright') {
+        changePage(1); // Move to next page with right arrow key
+    } else if (key === 'arrowleft') {
+        changePage(-1); // Move to previous page with left arrow key
+    }
+});
 
 function changePage(direction) {
     currentPage += direction;
