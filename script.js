@@ -72,6 +72,7 @@ function initializeButtons() {
     loadButtonState();
 }
 
+
 function showAnswer() {
     const correctAnswer = questions.find(q => q.text === document.getElementById("question-text").textContent).answer;
     document.querySelectorAll(".question-options li").forEach(option => {
@@ -99,6 +100,78 @@ function loadButtonState() {
     clickedButtons.forEach(number => {
         document.querySelectorAll(".question-button")[number - 1].classList.add("clicked");
     });
+}
+
+
+function closeModal() {
+    const questionModal = document.getElementById("questionModal");
+    const resetBtn = document.querySelector(".reset-btn");
+    questionModal.style.display = "none";
+    stopTimer();
+    resetBtn.classList.remove("disabled");
+}
+
+function startTimer() {
+    let timeLeft = 15;
+    const timerDisplay = document.getElementById("timer-count");
+    timerDisplay.textContent = timeLeft;
+    const audio = document.getElementById("ding");
+
+    timerInterval = setInterval(() => {
+        timeLeft--;
+        if (timeLeft > 0) {
+            timerDisplay.textContent = timeLeft;
+        } else {
+            clearInterval(timerInterval);
+            timerDisplay.textContent = "Time's up!";
+            audio.play();
+        }
+    }, 1000);
+}
+
+function stopTimer() {
+    clearInterval(timerInterval);
+}
+
+
+function resetButtons() {
+    const password = prompt("Please enter the password to reset the questions:");
+    if (password === "ca-quiz") {
+        localStorage.removeItem("clickedButtons");
+        document.querySelectorAll(".question-button").forEach(button => button.classList.remove("clicked"));
+    } else {
+        alert("Incorrect password. Reset cancelled.");
+    }
+}
+
+// Listen for keydown events to trigger functions
+document.addEventListener('keydown', (event) => {
+    const key = event.key.toLowerCase(); // Ensures it works regardless of case
+    if (key === 'r') {
+        resetButtons();
+    } else if (key === 'arrowright') {
+        changePage(1); // Move to next page with right arrow key
+    } else if (key === 'arrowleft') {
+        changePage(-1); // Move to previous page with left arrow key
+    } else if (key === 'backspace') {
+        closeModal(); // Close the question modal with backspace key
+    }
+});
+
+function changePage(direction) {
+    currentPage += direction;
+    if (currentPage < 1) currentPage = 1;
+    if (currentPage > 3) currentPage = 3;
+    updatePageVisibility();
+}
+
+function updatePageVisibility() {
+    document.getElementById("page1").classList.toggle("active", currentPage === 1);
+    document.getElementById("page2").classList.toggle("active", currentPage === 2);
+    document.getElementById("page3").classList.toggle("active", currentPage === 3);
+    document.getElementById("page-number").textContent = `Page ${currentPage}`;
+    document.getElementById("prev-page").style.display = currentPage === 1 ? "none" : "block";
+    document.getElementById("next-page").style.display = currentPage === 3 ? "none" : "block";
 }
 
 function openQuestion(index) {
@@ -130,7 +203,7 @@ function closeModal() {
 }
 
 function startTimer() {
-    let timeLeft = 60;
+    let timeLeft = 15;
     const timerDisplay = document.getElementById("timer-count");
     timerDisplay.textContent = timeLeft;
     const audio = document.getElementById("ding");
@@ -151,45 +224,8 @@ function stopTimer() {
     clearInterval(timerInterval);
 }
 
+
 function initializePage() {
     initializeButtons();
     updatePageVisibility();
-}
-
-function resetButtons() {
-    const password = prompt("Please enter the password to reset the questions:");
-    if (password === "ca-quiz") {
-        localStorage.removeItem("clickedButtons");
-        document.querySelectorAll(".question-button").forEach(button => button.classList.remove("clicked"));
-    } else {
-        alert("Incorrect password. Reset cancelled.");
-    }
-}
-
-// Listen for keydown event to trigger reset function with "r" key
-document.addEventListener('keydown', (event) => {
-    const key = event.key.toLowerCase(); // Ensures it works regardless of case
-    if (key === 'r') {
-        resetButtons();
-    } else if (key === 'arrowright') {
-        changePage(1); // Move to next page with right arrow key
-    } else if (key === 'arrowleft') {
-        changePage(-1); // Move to previous page with left arrow key
-    }
-});
-
-function changePage(direction) {
-    currentPage += direction;
-    if (currentPage < 1) currentPage = 1;
-    if (currentPage > 3) currentPage = 3;
-    updatePageVisibility();
-}
-
-function updatePageVisibility() {
-    document.getElementById("page1").classList.toggle("active", currentPage === 1);
-    document.getElementById("page2").classList.toggle("active", currentPage === 2);
-    document.getElementById("page3").classList.toggle("active", currentPage === 3);
-    document.getElementById("page-number").textContent = `Page ${currentPage}`;
-    document.getElementById("prev-page").style.display = currentPage === 1 ? "none" : "block";
-    document.getElementById("next-page").style.display = currentPage === 3 ? "none" : "block";
 }
