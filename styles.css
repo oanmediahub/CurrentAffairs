@@ -6,11 +6,7 @@ body {
     text-align: center;
     font-family: "Lobster", sans-serif;
 }
-.lobster-regular {
-    font-family: "Lobster", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-}
+
 h1 {
     color: #000;
     padding-top: 20px;
@@ -18,23 +14,27 @@ h1 {
     font-size: 2.5em;
     font-weight: bold;
 }
+
 .page-number {
     color: #6c757d;
     font-size: 1.2em;
     margin-bottom: 20px;
     font-style: italic;
 }
+
 .question-page {
     display: none;
-    grid-template-columns: repeat(5 , 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 15px;
     max-width: 1200px;
     margin: auto;
     padding: 20px;
 }
+
 .question-page.active {
     display: grid;
 }
+
 .question-button {
     display: block;
     width: 200px;  
@@ -58,23 +58,28 @@ h1 {
     backdrop-filter: blur(2px);
     box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.324); 
 }
+
 .question-button:hover {
     transform: scale(1.1);
 }
+
 .question-button.clicked {
     opacity: 0.1;
-    cursor:default;
+    cursor: default;
 }
+
 .question-button.clicked:hover {
     transform: scale(1);
 }
+
 .last-row-buttons {
     display: flex;
     justify-content: center;
     width: 100%;
     gap: 15px;
-    padding-left: calc(40%);  
+    padding-left: calc(40%);
 }
+
 .modal {
     display: none;
     position: fixed;
@@ -86,6 +91,7 @@ h1 {
     justify-content: center;
     align-items: center;
 }
+
 .modal-content {
     background-color: #fff;
     padding: 20px;
@@ -100,74 +106,78 @@ h1 {
     flex-direction: column;
     justify-content: space-between;
 }
+
 .close-btn {
     position: absolute;
     bottom: 10px;
     right: 10px;
     font-size: 1.5em;
     cursor: pointer;
-    
 }
+
 .question-header {
     font-size: 2em;
     font-weight: bold;
     text-align: center;
     font-family: "Caveat", cursive;
-    
 }
+
 .question-text {
     font-size: 2.1em;
     font-weight: bold;
-    font-family: "Caveat", cursive;          
-    margin-bottom: 20px;  
-    margin-top: 50px;  
+    font-family: "Caveat", cursive;
+    margin-bottom: 20px;
+    margin-top: 50px;
 }
+
 .question-options {
     list-style-type: none;
     padding: 0;
     font-family: "Caveat", cursive;
-    margin-bottom: 100px;  
+    margin-bottom: 100px;
     margin-top: 20px;
 }
+
 .question-options li {
     margin: 10px 0;
     font-size: 1.5em;
     padding: 10px;
     border-radius: 5px;
     cursor: pointer;
-    
 }
+
 .question-options .correct-answer {
     color: #28a745;
     font-weight: bold;
-    font-family: "Caveat", cursive;
     width: 50%;
 }
+
 .navigation {
     display: flex;
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
-    font-family: "Caveat", cursive;
     top: 20px;
     right: 20px;
     position: absolute;
     color: rgb(40, 115, 196);
 }
+
 .back-btn {
     font-size: 1.5em;
     cursor: pointer;
-    position: absolute;  
-    top: 20px;  
-    left: 20px;  
-    font-family: "Caveat", cursive;
+    position: absolute;
+    top: 20px;
+    left: 20px;
     color: rgb(40, 115, 196);
 }
+
 .back-btn::before {
-    content: "\f0a8"; 
+    content: "\f0a8";
     font-family: "Font Awesome 6 Free";
     font-weight: 900;
 }
+
 .timer {
     font-size: 3em;
     color: rgb(229, 9, 9);
@@ -175,8 +185,8 @@ h1 {
     position: absolute;
     bottom: 10px;
     right: 10px;
-    
 }
+
 .answer-btn {
     font-size: 5em;
     cursor: pointer;
@@ -193,13 +203,14 @@ h1 {
     position: absolute;
     top: 20px;
     right: 20px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); 
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .reset-btn.disabled {
     background-color: #ccc;
     cursor: not-allowed;
 }
+
 .arrow-button {
     background-color: #6c757d;
     color: white;
@@ -209,27 +220,29 @@ h1 {
     cursor: pointer;
     font-size: 1.5em;
     position: fixed;
-    bottom: 20px;
+    bottom: 50px;
     transition: background-color 0.3s;
 }
+
 .arrow-button:hover {
     background-color: #495057;
 }
+
 .footer {
     position: fixed;
     bottom: 0;
     width: 100%;
-    background-color: transparent;  /* Make background transparent */
+    background-color: transparent;
     color: rgb(0, 0, 0);
     text-align: center;
     padding: 10px 0;
     font-size: 0.9em;
     font-family: "Helvetica Neue", Arial, sans-serif;
-    pointer-events: none;  /* Allow clicking on elements behind it */
+    pointer-events: none;
 }
 
 .footer a {
     color: orangered;
     text-decoration: none;
-    pointer-events: auto;  /* Make the link clickable */
+    pointer-events: auto;
 }
